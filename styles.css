@@ -54,7 +54,7 @@ main {
     -ms-user-select: none;
     user-select: none;
 }
-.password .action button {
+.password .actions button {
     background-color: transparent;
     border: none;
     cursor: pointer;
