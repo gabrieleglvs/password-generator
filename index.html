@@ -13,9 +13,11 @@
 
     <input type="range" name="password-length" id="password-length" value="16" min="4" max="64">
 
-    <button>Copiar senha</button>
+    <button id="copy">Copiar senha</button>
 
     <script>
+        const inputEl = document.querySelector("#password") //puxa o elemento input
+
         let passwordLength = 16
 
         function generatePassword() {
@@ -29,10 +31,11 @@
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
 
-            const inputEl = document.querySelector("#password") //puxa o elemento input
-            inputEl.value = password //mostrando a senha gerada dentro do input
+            inputEl.value = password //coloando a  a senha gerada dentro do input
+        }
 
-            //console.log(password)
+        function copy() {
+            navigator.clipboard.writeText(inputEl.value) //mandando copiar o que está dentro do input
         }
 
         const passwordlengthEl = document.querySelector("#password-length")
@@ -44,6 +47,9 @@
             generatePassword() //aqui eu já posso mandar gerar minha senha porque já tenho o numero de chars que desejo
         })
 
+        //Quando o botão for clicando ele vai copiar o conteúdo do input
+        const copyButtonEl = document.querySelector("#copy")
+        copyButtonEl.addEventListener("click", copy)
     </script>
 </body>
 </html>
