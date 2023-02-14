@@ -22,7 +22,7 @@
                     <input type="text" name="password" id="password">
                 </div>
                 <div class="action">
-                    <button id="copy2">
+                    <button id="copy-1">
                         <img src="img/copy.svg" width="42" alt="Botão de cópia">
                     </button>
                     <button id="renew">
@@ -34,7 +34,7 @@
     
         <input type="range" name="password-length" id="password-length" value="16" min="4" max="64">
     
-        <button id="copy">Copiar senha</button>
+        <button id="copy-2">Copiar senha</button>
     </main>
 
     <script>
@@ -70,8 +70,11 @@
         })
 
         //Quando o botão for clicando ele vai copiar o conteúdo do input
-        const copyButtonEl = document.querySelector("#copy")
+        const copyButtonEl = document.querySelector("#copy-1")
         copyButtonEl.addEventListener("click", copy)
+
+        const copyButtonEl2 = document.querySelector("#copy-2")
+        copyButtonEl2.addEventListener("click", copy)
     </script>
 </body>
 </html>
