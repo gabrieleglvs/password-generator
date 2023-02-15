@@ -75,7 +75,7 @@ main {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 /*essas classes: completed, critical, warning e safe vão ser adicionadas via js*/
