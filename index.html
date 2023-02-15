@@ -105,13 +105,15 @@
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
 
-            inputEl.value = password //colocando a  a senha gerada dentro do input
+            inputEl.value = password //colocando a senha gerada dentro do input
             
             calculateQuality()
         }
 
         function calculateQuality() {
-            const percent = Math.round((passwordLength / 64) * 100)
+            //T*P1 + M*P2 + N*P3 + S*P4 = 100
+            //Tamanho*0.25 + Maius*0.15 + Minus*0.25 + Simb*0.35 = 100
+            const percent = Math.round((passwordLength / 64) * 25 + (upperCaseCheckEl.checked ? 15 : 0) + (numbersCheckEl.checked ? 25 : 0) + (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada
 
             console.log(percent)
 
