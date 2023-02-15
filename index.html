@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="security-indicator">
-               <div id="security-indicator-bar" class="bar critical">
+               <div id="security-indicator-bar" class="bar">
                </div> 
             </div>
         </section>
@@ -113,11 +113,29 @@
         function calculateQuality() {
             //T*P1 + M*P2 + N*P3 + S*P4 = 100
             //Tamanho*0.25 + Maius*0.15 + Minus*0.25 + Simb*0.35 = 100
-            const percent = Math.round((passwordLength / 64) * 25 + (upperCaseCheckEl.checked ? 15 : 0) + (numbersCheckEl.checked ? 25 : 0) + (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada
-
-            console.log(percent)
+            const percent = Math.round((passwordLength / 64) * 25 + 
+                (upperCaseCheckEl.checked ? 15 : 0) + 
+                (numbersCheckEl.checked ? 25 : 0) + 
+                (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada
 
             securityIndicatorBarEl.style.width = `${percent}%` //definindo o width da barra em função da porcentagem
+
+            if(percent > 69) {
+                //safe
+                securityIndicatorBarEl.classList.remove('critical')
+                securityIndicatorBarEl.classList.remove('warning')
+                securityIndicatorBarEl.classList.add('safe')
+            } else if (percent > 50) {
+                //warning
+                securityIndicatorBarEl.classList.remove('critical')
+                securityIndicatorBarEl.classList.add('warning')
+                securityIndicatorBarEl.classList.remove('safe')
+            } else {
+                //critical
+                securityIndicatorBarEl.classList.add('critical')
+                securityIndicatorBarEl.classList.remove('warning')
+                securityIndicatorBarEl.classList.remove('safe')
+            }
         }
 
         function copy() {
