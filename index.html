@@ -105,7 +105,7 @@
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
 
-            inputEl.value = password //coloando a  a senha gerada dentro do input
+            inputEl.value = password //colocando a  a senha gerada dentro do input
         }
 
         function copy() {
@@ -116,7 +116,8 @@
         //Quando o password-length sofrer um input, vou guardar o valor dele na variável passwordLength
         passwordlengthEl.addEventListener("input", function() {
             passwordLength = passwordlengthEl.value
-            //console.log(passwordLength)
+
+            document.querySelector("#password-length-text").innerText = passwordLength
 
             generatePassword() //aqui eu já posso mandar gerar minha senha porque já tenho o numero de chars que desejo
         })
@@ -131,6 +132,8 @@
 
         const copyButtonEl2 = document.querySelector("#copy-2")
         copyButtonEl2.addEventListener("click", copy)
+
+        generatePassword()
     </script>
 </body>
 </html>
