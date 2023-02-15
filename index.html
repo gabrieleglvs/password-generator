@@ -72,11 +72,30 @@
 
     <script>
         const inputEl = document.querySelector("#password") //puxa o elemento input
+        const upperCaseCheckEl = document.querySelector("#uppercase-check")
+        const numbersCheckEl = document.querySelector("#numbers-check")
+        const symbolCheckEl = document.querySelector("#symbol-check")                
 
         let passwordLength = 16
 
         function generatePassword() {
-            const chars = "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789?!@&*()[]"
+            let chars = "abcdefghjklmnpqrstuvwxyz"
+
+            const upperCaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+            const numbersChars = "123456789"
+            const symbolChars = "?!@&*()[]"
+
+            if(upperCaseCheckEl.checked) {
+                chars += upperCaseChars
+            }
+
+            if(numbersCheckEl.checked) {
+                chars += numbersChars
+            }
+
+            if(symbolCheckEl.checked) {
+                chars += symbolChars
+            }
 
             let password = ""
 
@@ -101,6 +120,10 @@
 
             generatePassword() //aqui eu já posso mandar gerar minha senha porque já tenho o numero de chars que desejo
         })
+
+        upperCaseCheckEl.addEventListener("click", generatePassword)
+        numbersCheckEl.addEventListener("click", generatePassword)
+        symbolCheckEl.addEventListener("click", generatePassword)
 
         //Quando o botão for clicando ele vai copiar o conteúdo do input
         const copyButtonEl = document.querySelector("#copy-1")
