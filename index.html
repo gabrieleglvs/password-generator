@@ -31,8 +31,7 @@
                 </div>
             </div>
             <div class="security-indicator">
-               <div id="security-indicator-bar" class="bar" style="width: 90%">
-
+               <div id="security-indicator-bar" class="bar critical">
                </div> 
             </div>
         </section>
@@ -72,9 +71,10 @@
 
     <script>
         const inputEl = document.querySelector("#password") //puxa o elemento input
-        const upperCaseCheckEl = document.querySelector("#uppercase-check")
-        const numbersCheckEl = document.querySelector("#numbers-check")
-        const symbolCheckEl = document.querySelector("#symbol-check")                
+        const upperCaseCheckEl = document.querySelector("#uppercase-check") //checkbox uppercase
+        const numbersCheckEl = document.querySelector("#numbers-check") //checkbox numbers
+        const symbolCheckEl = document.querySelector("#symbol-check") //checkbox symbol
+        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar") //barra de qualidade da senha
 
         let passwordLength = 16
 
@@ -106,6 +106,16 @@
             }
 
             inputEl.value = password //colocando a  a senha gerada dentro do input
+            
+            calculateQuality()
+        }
+
+        function calculateQuality() {
+            const percent = Math.round((passwordLength / 64) * 100)
+
+            console.log(percent)
+
+            securityIndicatorBarEl.style.width = `${percent}%` //definindo o width da barra em função da porcentagem
         }
 
         function copy() {
