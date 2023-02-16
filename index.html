@@ -1,4 +1,3 @@
-<!--versão com comentários-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,6 +8,8 @@
 
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+
+
 </head>
 <body>
     <main>
@@ -69,132 +70,6 @@
             <button id="copy-2">Copiar senha</button>
         </div>
     </main>
-
-    <script>
-        const inputEl = document.querySelector("#password") //puxa o elemento input.
-        const upperCaseCheckEl = document.querySelector("#uppercase-check") //checkbox uppercase.
-        const numbersCheckEl = document.querySelector("#numbers-check") //checkbox numbers.
-        const symbolCheckEl = document.querySelector("#symbol-check") //checkbox symbol.
-        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar") //barra de qualidade da senha.
-
-        let passwordLength = 16
-
-        function generatePassword() {
-            let chars = "abcdefghjklmnpqrstuvwxyz"
-
-            const upperCaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
-            const numbersChars = "123456789"
-            const symbolChars = "?!@&*()[]"
-
-            if(upperCaseCheckEl.checked) {
-                chars += upperCaseChars
-            }
-
-            if(numbersCheckEl.checked) {
-                chars += numbersChars
-            }
-
-            if(symbolCheckEl.checked) {
-                chars += symbolChars
-            }
-
-            let password = ""
-
-            for(let i = 0; i < passwordLength; i++) {
-                const randomNumber = Math.floor(Math.random() * chars.length)
-                //Aqui retorna uma posição randomica dentro do chars.
-                password += chars.substring(randomNumber, randomNumber + 1)
-            }
-
-            inputEl.value = password //colocando a senha gerada dentro do input.
-            
-            calculateQuality()
-            calculateFontSize()
-        }
-
-        function calculateQuality() {
-            //T*P1 + M*P2 + N*P3 + S*P4 = 100
-            //Tamanho*0.25 + Maius*0.15 + Minus*0.25 + Simb*0.35 = 100
-            const percent = Math.round((passwordLength / 64) * 25 + 
-                (upperCaseCheckEl.checked ? 15 : 0) + 
-                (numbersCheckEl.checked ? 25 : 0) + 
-                (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada.
-
-            securityIndicatorBarEl.style.width = `${percent}%` //definindo o width da barra em função da porcentagem.
-
-            if(percent > 69) {
-                //safe
-                securityIndicatorBarEl.classList.remove('critical')
-                securityIndicatorBarEl.classList.remove('warning')
-                securityIndicatorBarEl.classList.add('safe')
-            } else if (percent > 50) {
-                //warning
-                securityIndicatorBarEl.classList.remove('critical')
-                securityIndicatorBarEl.classList.add('warning')
-                securityIndicatorBarEl.classList.remove('safe')
-            } else {
-                //critical
-                securityIndicatorBarEl.classList.add('critical')
-                securityIndicatorBarEl.classList.remove('warning')
-                securityIndicatorBarEl.classList.remove('safe')
-            }
-
-            if(percent >= 100) {
-                securityIndicatorBarEl.classList.add('completed')
-            } else {
-                securityIndicatorBarEl.classList.remove('completed')
-            }
-        }
-
-        function copy() {
-            navigator.clipboard.writeText(inputEl.value) //mandando copiar o que está dentro do input.
-        }
-
-        function calculateFontSize() {
-            if(passwordLength > 45) {
-                inputEl.classList.remove("font-sm")
-                inputEl.classList.remove("font-xs")
-                inputEl.classList.add("font-xxs")
-            } else if (passwordLength > 32) {
-                inputEl.classList.remove("font-sm")
-                inputEl.classList.add("font-xs")
-                inputEl.classList.remove("font-xxs")
-            } else if (passwordLength > 22) {
-                inputEl.classList.add("font-sm")
-                inputEl.classList.remove("font-xs")
-                inputEl.classList.remove("font-xxs")
-            } else {
-                inputEl.classList.remove("font-sm")
-                inputEl.classList.remove("font-xs")
-                inputEl.classList.remove("font-xxs")
-            }
-        }
-
-        const passwordlengthEl = document.querySelector("#password-length")
-        //Quando o password-length sofrer um input, vou guardar o valor dele na variável passwordLength -->.
-        passwordlengthEl.addEventListener("input", function() {
-            passwordLength = passwordlengthEl.value
-
-            document.querySelector("#password-length-text").innerText = passwordLength
-
-            generatePassword() //aqui eu posso mandar gerar minha senha, porque já tenho o número de chars que desejo.
-        })
-
-        upperCaseCheckEl.addEventListener("click", generatePassword)
-        numbersCheckEl.addEventListener("click", generatePassword)
-        symbolCheckEl.addEventListener("click", generatePassword)
-
-        //Quando o botão for clicando ele vai copiar o conteúdo do input.
-        const copyButtonEl = document.querySelector("#copy-1")
-        copyButtonEl.addEventListener("click", copy)
-
-        const copyButtonEl2 = document.querySelector("#copy-2")
-        copyButtonEl2.addEventListener("click", copy)
-
-        const renewEl = document.querySelector("#renew")
-        renewEl.addEventListener("click", generatePassword)
-
-        generatePassword()
-    </script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-/*versão com comentários*/
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;600&display=swap');
 
 body {
@@ -88,7 +87,6 @@ main {
     transition: all 0.1s;
 }
 
-/*essas classes: completed, critical, warning e safe vão ser adicionadas via js*/
 .security-indicator .bar.completed {
     border-top-right-radius: 0;
 }
@@ -176,7 +174,6 @@ main {
     width: 0;
     opacity: 0;
     cursor: pointer;
-/*o checkbox para de aparecer, mas ainda continua lá*/
 }
 .checkbox-container .checkmark {
     position: absolute;
