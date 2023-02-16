@@ -1,3 +1,4 @@
+<!--versão com comentários-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -70,11 +71,11 @@
     </main>
 
     <script>
-        const inputEl = document.querySelector("#password") //puxa o elemento input
-        const upperCaseCheckEl = document.querySelector("#uppercase-check") //checkbox uppercase
-        const numbersCheckEl = document.querySelector("#numbers-check") //checkbox numbers
-        const symbolCheckEl = document.querySelector("#symbol-check") //checkbox symbol
-        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar") //barra de qualidade da senha
+        const inputEl = document.querySelector("#password") //puxa o elemento input.
+        const upperCaseCheckEl = document.querySelector("#uppercase-check") //checkbox uppercase.
+        const numbersCheckEl = document.querySelector("#numbers-check") //checkbox numbers.
+        const symbolCheckEl = document.querySelector("#symbol-check") //checkbox symbol.
+        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar") //barra de qualidade da senha.
 
         let passwordLength = 16
 
@@ -101,11 +102,11 @@
 
             for(let i = 0; i < passwordLength; i++) {
                 const randomNumber = Math.floor(Math.random() * chars.length)
-                //Aqui retorna uma posição randomica dentro do chars
+                //Aqui retorna uma posição randomica dentro do chars.
                 password += chars.substring(randomNumber, randomNumber + 1)
             }
 
-            inputEl.value = password //colocando a senha gerada dentro do input
+            inputEl.value = password //colocando a senha gerada dentro do input.
             
             calculateQuality()
             calculateFontSize()
@@ -117,9 +118,9 @@
             const percent = Math.round((passwordLength / 64) * 25 + 
                 (upperCaseCheckEl.checked ? 15 : 0) + 
                 (numbersCheckEl.checked ? 25 : 0) + 
-                (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada
+                (symbolCheckEl.checked ? 35 : 0)) //definindo que ela vai preencher no máx 25% da barra em funcao do tamanho da senha + 15% se upperCase estiver checada + 25% se numbers estiver checada + 35% se symbols estiver checada.
 
-            securityIndicatorBarEl.style.width = `${percent}%` //definindo o width da barra em função da porcentagem
+            securityIndicatorBarEl.style.width = `${percent}%` //definindo o width da barra em função da porcentagem.
 
             if(percent > 69) {
                 //safe
@@ -146,7 +147,7 @@
         }
 
         function copy() {
-            navigator.clipboard.writeText(inputEl.value) //mandando copiar o que está dentro do input
+            navigator.clipboard.writeText(inputEl.value) //mandando copiar o que está dentro do input.
         }
 
         function calculateFontSize() {
@@ -170,20 +171,20 @@
         }
 
         const passwordlengthEl = document.querySelector("#password-length")
-        //Quando o password-length sofrer um input, vou guardar o valor dele na variável passwordLength
+        //Quando o password-length sofrer um input, vou guardar o valor dele na variável passwordLength -->.
         passwordlengthEl.addEventListener("input", function() {
             passwordLength = passwordlengthEl.value
 
             document.querySelector("#password-length-text").innerText = passwordLength
 
-            generatePassword() //aqui eu já posso mandar gerar minha senha porque já tenho o numero de chars que desejo
+            generatePassword() //aqui eu posso mandar gerar minha senha, porque já tenho o número de chars que desejo.
         })
 
         upperCaseCheckEl.addEventListener("click", generatePassword)
         numbersCheckEl.addEventListener("click", generatePassword)
         symbolCheckEl.addEventListener("click", generatePassword)
 
-        //Quando o botão for clicando ele vai copiar o conteúdo do input
+        //Quando o botão for clicando ele vai copiar o conteúdo do input.
         const copyButtonEl = document.querySelector("#copy-1")
         copyButtonEl.addEventListener("click", copy)
 

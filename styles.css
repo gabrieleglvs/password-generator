@@ -1,3 +1,4 @@
+/*versão com comentários*/
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Inter:wght@400;600&display=swap');
 
 body {
@@ -175,7 +176,7 @@ main {
     width: 0;
     opacity: 0;
     cursor: pointer;
-/*o checkbox para desaparecer, mas ainda continua lá*/
+/*o checkbox para de aparecer, mas ainda continua lá*/
 }
 .checkbox-container .checkmark {
     position: absolute;
